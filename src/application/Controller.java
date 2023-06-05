@@ -126,4 +126,16 @@ public class Controller {
 	        currentDate = currentDate.plusDays(1);//currentDate を1日進める、これにより、次の日付を設定するための準備
 	    }
 	}
+	
+	@FXML
+	public void handleNextMonthButtonAction() {
+	    LocalDate currentDate = LocalDate.now();
+	    LocalDate nextMonthDate = currentDate.plusMonths(1);
+
+	    for (Label dateLabel : dateLabels) {
+	        int dayOfMonth = nextMonthDate.getDayOfMonth();
+	        dateLabel.setText(String.valueOf(dayOfMonth));
+	        nextMonthDate = nextMonthDate.plusDays(1);
+	    }
+	}
 }
