@@ -103,11 +103,11 @@ public class Controller {
 	    dateLabels.add(dateLabel34);
 	    dateLabels.add(dateLabel35);
 	    
-	    currentDate = LocalDate.now().withDayOfMonth(1); // 現在の月の最初の日を取得
+	    //currentDate = LocalDate.now().withDayOfMonth(1); // 現在の月の最初の日を取得
 
 	    
 	 // 現在の西暦を表示
-	    int currentYear = LocalDate.now().getYear();//LocalDate.now().getYear()は、現在の日付を取得し、その日付の年部分を取得するメソッドLocalDate.now()は現在の日付を表すLocalDateオブジェクトを取得
+	    int currentYear = LocalDate.now().getYear();//LocalDate.now().getYear()は、現在の日付取得し、その日付の年部分を取得するメソッドLocalDate.now()は現在の日付を表すLocalDateオブジェクトを取得
 	    yearLabel.setText(String.valueOf(currentYear));//数値を文字列に変換し、yearLabel.setText()メソッドを使用してyearLabelのテキストとして設定
 
 	 // 現在の月を表示
@@ -132,44 +132,44 @@ public class Controller {
 	
 	@FXML
     public void handleNextMonthButtonAction() {
-		currentDate = currentDate.plusMonths(1); // 次の月へ移動
-        updateYearAndMonthLabels(currentDate);
-        setDatesInLabels(currentDate);
+		currentDate = currentDate.plusMonths(1); // currentDateに1ヶ月後の日付を設定
+        updateYearAndMonthLabels(currentDate);//updateYearAndMonthLabelsメソッドを呼び出し、currentDateの年と月を表示
+        setDatesInLabels(currentDate);//setDatesInLabelsメソッドを呼び出し、currentDateを基に日付の表示
     }
 		
 	@FXML
     public void handlePreviousMonthButtonAction() {
-		currentDate = currentDate.minusMonths(1); // 前の月へ移動
+		currentDate = currentDate.minusMonths(1); // currentDateに1ヶ月前の日付を設定
         updateYearAndMonthLabels(currentDate);
         setDatesInLabels(currentDate);
     }
 	
 	 private void updateYearAndMonthLabels(LocalDate date) {
-	        int year = date.getYear();
-	        yearLabel.setText(String.valueOf(year));
-	        int month = date.getMonthValue();
-	        monthLabel.setText(String.valueOf(month));
+	        int year = date.getYear();//引数として渡されたdateから年を取得
+	        yearLabel.setText(String.valueOf(year));//yearLabelのテキストを、取得した年に更新
+	        int month = date.getMonthValue();//引数として渡されたdateから月を取得
+	        monthLabel.setText(String.valueOf(month));//monthLabelのテキストを、取得した月に更新
 	    }
 	 
 	 private void setDatesInLabels(LocalDate date) {
-		// 全ての日付ラベルをクリア
+		// 全ての日付ラベルを空のテキストに設定
 		    for (Label label : dateLabels) {
 		        label.setText("");
 		    }
 
 		    // ラベルに日付を設定
 		    int dayOfMonth = 1;
-		    int startDayOfWeek = date.withDayOfMonth(1).getDayOfWeek().getValue();
+		    int startDayOfWeek = date.withDayOfMonth(1).getDayOfWeek().getValue();//指定された日付の月初めの曜日を取得getDayOfWeek().getValue()は、曜日を表す数値（1から7、1が月曜日、7が日曜日）を取得するために使用
 		    if (startDayOfWeek == 7) {
-		        startDayOfWeek = 0; // 日曜日を0に調整してリストのインデックスに合わせる
+		        startDayOfWeek = 0; // リストのインデックスと曜日の数値を合わせるためもし月初めの曜日が日曜日（7）だった場合、0に調整
 		    }
-		    int daysInMonth = date.lengthOfMonth();
-		    int labelIndex = startDayOfWeek;
+		    int daysInMonth = date.lengthOfMonth();//lengthOfMonth()メソッドは、指定された日付の月の日数を取得
+		    int labelIndex = startDayOfWeek;//日付を表示するラベルのインデックスを初期化します。最初の日付の表示位置を設定するために使用
 
-		    for (int i = 0; i < daysInMonth; i++) {
+		    for (int i = 0; i < daysInMonth; i++) {//月の日数の回数だけループします。ループ内では、日付をラベルに表示する処理
 		        dateLabels.get(labelIndex).setText(String.valueOf(dayOfMonth));
-		        dayOfMonth++;
-		        labelIndex++;
+		        dayOfMonth++;//日付のカウンタをインクリメント
+		        labelIndex++;//ラベルのインデックスをインクリメント
 
 		        if (labelIndex == dateLabels.size()) {
 		            break; // ラベルの末尾に達したらループを終了
