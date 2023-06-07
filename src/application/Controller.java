@@ -54,6 +54,13 @@ public class Controller {
 	@FXML private Label dateLabel33;
 	@FXML private Label dateLabel34;
 	@FXML private Label dateLabel35;
+	@FXML private Label dateLabel36;
+	@FXML private Label dateLabel37;
+	@FXML private Label dateLabel38;
+	@FXML private Label dateLabel39;
+	@FXML private Label dateLabel40;
+	@FXML private Label dateLabel41;
+	@FXML private Label dateLabel42;
 	
 	//35個のLabelオブジェクトをリストとして保持
 		
@@ -102,6 +109,13 @@ public class Controller {
 	    dateLabels.add(dateLabel33);
 	    dateLabels.add(dateLabel34);
 	    dateLabels.add(dateLabel35);
+	    dateLabels.add(dateLabel36);
+	    dateLabels.add(dateLabel37);
+	    dateLabels.add(dateLabel38);
+	    dateLabels.add(dateLabel39);
+	    dateLabels.add(dateLabel40);
+	    dateLabels.add(dateLabel41);
+	    dateLabels.add(dateLabel42);
 	    
 	    //currentDate = LocalDate.now().withDayOfMonth(1); // 現在の月の最初の日を取得
 
@@ -173,10 +187,8 @@ public class Controller {
 
 		        if (labelIndex == dateLabels.size()) {
 		            break; // ラベルの末尾に達したらループを終了
-		        }
-		     // 日付が現在の日付と一致する場合、背景色を黄色に設定
-		        if (dayOfMonth == LocalDate.now().getDayOfMonth()) {
-		        	dateLabels.get(labelIndex).setStyle("-fx-background-color: yellow;");
+		        
+		     
 		        }
 		    }
 		    
