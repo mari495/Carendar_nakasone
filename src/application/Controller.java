@@ -122,6 +122,11 @@ public class Controller {
 	 
 	    //月の日数
 	    int[] daysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	    if ((currentYear % 4 == 0 && currentYear % 100 != 0) || currentYear % 400 == 0) {
+	        // 西暦が4で割り切れるかつ100で割り切れない、または400で割り切れる場合
+	        // 2月の日付を29日までセットする処理を追加
+	        daysInMonth[1] = 29;
+	    }
 	  
 	}
 	
@@ -147,19 +152,30 @@ public class Controller {
 	    }
 	 
 	 private void setDatesInLabels(LocalDate date) {
-	        // 全ての日付ラベルをクリア
-	        for (Label label : dateLabels) {
-	            label.setText("");
-	        }
+		// 全ての日付ラベルをクリア
+		    for (Label label : dateLabels) {
+		        label.setText("");
+		    }
 
-	        // ラベルに日付を設定
-	        int dayOfMonth = 1;
-	        int daysInMonth = date.lengthOfMonth();
-	        int startDayOfWeek = date.withDayOfMonth(1).getDayOfWeek().getValue();
-	        for (int i = startDayOfWeek - 1; i < daysInMonth + startDayOfWeek - 1; i++) {
-	            dateLabels.get(i).setText(String.valueOf(dayOfMonth));
-	            dayOfMonth++;
-	        }
+		    // ラベルに日付を設定
+		    int dayOfMonth = 1;
+		    int startDayOfWeek = date.withDayOfMonth(1).getDayOfWeek().getValue();
+		    if (startDayOfWeek == 7) {
+		        startDayOfWeek = 0; // 日曜日を0に調整してリストのインデックスに合わせる
+		    }
+		    int daysInMonth = date.lengthOfMonth();
+		    int labelIndex = startDayOfWeek;
+
+		    for (int i = 0; i < daysInMonth; i++) {
+		        dateLabels.get(labelIndex).setText(String.valueOf(dayOfMonth));
+		        dayOfMonth++;
+		        labelIndex++;
+
+		        if (labelIndex == dateLabels.size()) {
+		            break; // ラベルの末尾に達したらループを終了
+		        }
+		    }
+		
 	    }
 	/*MEMO基本的には4年に1度、1年の日数が1日多くなるうるう年。正確には必ず4年に1度ではなく8年に1度の時もある
 	 * 
