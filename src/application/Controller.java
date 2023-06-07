@@ -174,7 +174,12 @@ public class Controller {
 		        if (labelIndex == dateLabels.size()) {
 		            break; // ラベルの末尾に達したらループを終了
 		        }
+		     // 日付が現在の日付と一致する場合、背景色を黄色に設定
+		        if (dayOfMonth == LocalDate.now().getDayOfMonth()) {
+		        	dateLabels.get(labelIndex).setStyle("-fx-background-color: yellow;");
+		        }
 		    }
+		    
 		
 	    }
 	/*MEMO基本的には4年に1度、1年の日数が1日多くなるうるう年。正確には必ず4年に1度ではなく8年に1度の時もある
