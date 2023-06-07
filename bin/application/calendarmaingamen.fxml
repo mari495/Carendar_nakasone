@@ -266,12 +266,12 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <Label fx:id="monthLabel" alignment="TOP_LEFT" layoutX="269.0" layoutY="20.0" prefHeight="19.0" prefWidth="96.0" style="-fx-border-color: black;">
+            <Label fx:id="monthLabel" alignment="CENTER" layoutX="269.0" layoutY="20.0" prefHeight="19.0" prefWidth="96.0" style="-fx-background-color: #CCFF99;">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="yearLabel" alignment="TOP_LEFT" layoutX="269.0" layoutY="341.0" prefHeight="19.0" prefWidth="96.0" style="-fx-border-color: black;">
+            <Label fx:id="yearLabel" alignment="CENTER" layoutX="269.0" layoutY="341.0" prefHeight="19.0" prefWidth="96.0" style="-fx-background-color: #CCFF99;">
                <font>
                   <Font size="18.0" />
                </font>
