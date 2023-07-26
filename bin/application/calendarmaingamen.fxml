@@ -55,7 +55,7 @@
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
             <Button layoutX="30.0" layoutY="18.0" mnemonicParsing="false" onAction="#handlePreviousMonthButtonAction" text="前月" />
-            <Button layoutX="564.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleNextMonthButtonAction" text="翌月" />
+            <Button layoutX="572.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleNextMonthButtonAction" text="翌月" />
             <Label fx:id="dateLabel1" alignment="TOP_LEFT" layoutX="50.0" layoutY="68.0" prefHeight="48.0" prefWidth="78.0" style="-fx-border-color: black; -fx-background-color: red;">
                <font>
                   <Font size="18.0" />

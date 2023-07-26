@@ -13,7 +13,7 @@ public class Main extends Application {
         getClass().getResource("calendarmaingamen.fxml")
       );
       Scene scene = new Scene(root);
-      primaryStage.setTitle("calendar");
+      primaryStage.setTitle("calendar_nakasone");
       primaryStage.setScene(scene);
       primaryStage.show();
     } catch (Exception e) {//例外処理として
